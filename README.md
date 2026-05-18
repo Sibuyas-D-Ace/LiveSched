@@ -1,6 +1,9 @@
 # LiveSched
 A live schedule I made for Lively wallpaper, with a built in verse of the day!
 
+<img width="1919" height="1039" alt="image" src="https://github.com/user-attachments/assets/23707e7c-b2f0-421a-8069-e60186b2dba9" />
+
+
 # GUIDE
 I made this wallpaper to keep up with my deadlines in school without having to open the school portal.
 
