@@ -1,0 +1,23 @@
+function doGet() {
+  // 1. Paste your Calendar ID here
+  const calId = "YOUR_CALENDAR_HERE"; 
+  const calendar = CalendarApp.getCalendarById(calId);
+  
+  if (!calendar) {
+    return ContentService.createTextOutput(JSON.stringify({error: "Calendar not found"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  const now = new Date();
+  const future = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)); 
+  const events = calendar.getEvents(now, future);
+
+  const results = events.map(e => ({
+    title: e.getTitle(),
+    start: e.getStartTime().getTime(),
+    created: e.getDateCreated() ? e.getDateCreated().getTime() : 0 
+  })).sort((a, b) => a.start - b.start);
+
+  return ContentService.createTextOutput(JSON.stringify(results))
+    .setMimeType(ContentService.MimeType.JSON);
+}
